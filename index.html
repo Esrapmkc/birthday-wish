@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Birthday Wish — Interactive Card</title>
+  <meta name="description" content="Interactive birthday cake → envelope → confetti → card message (GitHub Pages ready)." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <canvas id="confetti" aria-hidden="true"></canvas>
+
+  <div class="bg" aria-hidden="true"></div>
+  <div class="glitter-layer" aria-hidden="true"></div>
+
+  <main class="app" role="application" aria-label="Birthday surprise">
+    <section class="stage" id="stage">
+      <div class="cake-wrap" aria-hidden="true">
+        <img class="cake" src="assets/cake.svg" alt="Birthday cake" />
+
+        <!-- Overlays on cake -->
+        <div class="wish">Make a wish</div>
+        <div class="countdown" id="countdown" aria-live="polite">5</div>
+
+        <!-- Candles (simple overlay) -->
+        <div class="candles" id="candles" aria-hidden="true">
+          <div class="candle" style="--x: 38%"><div class="wick"></div><div class="flame"></div></div>
+          <div class="candle" style="--x: 47%"><div class="wick"></div><div class="flame"></div></div>
+          <div class="candle" style="--x: 56%"><div class="wick"></div><div class="flame"></div></div>
+          <div class="candle" style="--x: 65%"><div class="wick"></div><div class="flame"></div></div>
+          <div class="candle" style="--x: 74%"><div class="wick"></div><div class="flame"></div></div>
+        </div>
+      </div>
+
+      <!-- Envelope appears after blow-out -->
+      <button class="envelope" id="envelope" type="button" aria-label="Mektubu aç">
+        <span class="env-shadow" aria-hidden="true"></span>
+        <span class="env-body" aria-hidden="true"></span>
+        <span class="env-flap" aria-hidden="true"></span>
+        <span class="env-front" aria-hidden="true"></span>
+        <span class="env-seal" aria-hidden="true"></span>
+        <span class="env-hint">Tap / Click</span>
+      </button>
+
+      <!-- Card pops out -->
+      <section class="card" id="card" aria-label="Birthday card">
+        <div class="card-inner">
+          <img src="assets/card.svg" alt="Birthday invitation card" />
+          <div class="card-message">
+            <div class="to" id="to"></div>
+            <div class="msg" id="msg"></div>
+            <div class="from" id="from"></div>
+          </div>
+        </div>
+
+        <button class="replay" id="replay" type="button">Replay</button>
+      </section>
+    </section>
+
+    <!-- Start overlay (for mobile audio permission) -->
+    <section class="start" id="start" aria-label="Başlat">
+      <div class="start-card">
+        <div class="start-title">🎂 A tiny birthday surprise</div>
+        <p class="start-text">Tap to light the candles, make a wish, and open the letter.</p>
+        <button class="start-btn" id="startBtn" type="button">Start</button>
+        <p class="start-note">Sound works best after you tap Start.</p>
+      </div>
+    </section>
+  </main>
+
+  <audio id="pop" preload="auto" src="assets/pop.mp3"></audio>
+  <script src="script.js"></script>
+</body>
+</html>
